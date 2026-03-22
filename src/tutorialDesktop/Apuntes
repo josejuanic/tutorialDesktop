@@ -1,0 +1,46 @@
+
+JFrame frame = new JFrame("Título de la ventana");
+frame.setVisible(true); // Siempre al final
+
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+### Comportamiento al cerrar
+| Opción | Qué hace |
+|---|---|
+| `DO_NOTHING_ON_CLOSE` | No hace nada |
+| `HIDE_ON_CLOSE` | Oculta el frame (sigue en memoria) |
+| `DISPOSE_ON_CLOSE` | Destruye el frame (app sigue viva) |
+| `EXIT_ON_CLOSE` | Destruye el frame **y cierra la app** ✅ |
+
+### Layout por defecto: BorderLayout
+El `ContentPane` del JFrame usa **BorderLayout** por defecto. Las zonas son:
+```
+        NORTH
+WEST   CENTER   EAST
+        SOUTH
+
+frame.add(componente, BorderLayout.NORTH);  // arriba
+frame.add(componente, BorderLayout.SOUTH);  // abajo
+frame.add(componente, BorderLayout.CENTER); // centro (por defecto)
+
+//######## Layout por defecto: BorderLayout
+JLabel label = new JLabel("Texto");         // Etiqueta de texto
+JTextField campo = new JTextField(20);      // Campo de texto (20 cols)
+JButton boton = new JButton("Click");       // Botón
+JPanel panel = new JPanel();                // Contenedor auxiliar
+panel.add(label);                           // Añadir al panel
+
+//######## Tamaño y posición del frame
+frame.setSize(400, 300);                // Ancho x Alto fijo
+frame.setLocationRelativeTo(null);          // Centrar en pantalla
+frame.pack();                               // Ajustar al contenido(alternativa)
+frame.setBounds(x, y, ancho, alto);         // Posición + tamaño manual
+
+//######## Eventos con lambda
+boton.addActionListener(e -> {
+    String texto = campo.getText();  // Leer el campo
+    // hacer algo...
+});
+
+//######## Diálogos — JOptionPane
+JOptionPane.showMessageDialog(frame, "Mensaje a mostrar");

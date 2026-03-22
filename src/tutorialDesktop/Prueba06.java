@@ -79,6 +79,7 @@ public class Prueba06 {
 		});
 		chkAcepto.addActionListener(e -> validar.run());
 		validar.run();
+
 		// --- Acciones ---
 		btnAgregar.addActionListener(e -> {
 			area.append("Hola, " + txtNombre.getText().trim() + "!\n");
